@@ -15,17 +15,36 @@
 package org.elastos.videoclips.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 
 import org.elastos.videoclips.R;
+import org.elastos.videoclips.utils.Utils;
 
 /**
  * TODO: Javadoc
  */
 public class VideoGridExampleActivity extends Activity {
 
-    @Override public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_grid_example);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        Log.w(Utils.TAG, "onKeyUp() keyCode=" + keyCode);
+
+        if(keyCode == KeyEvent.KEYCODE_MENU) {
+            Intent intent = new Intent(getBaseContext(), SettingsExampleActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+
+        return super.onKeyUp(keyCode, event);
     }
 }
