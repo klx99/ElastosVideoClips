@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.elastos.videoclips">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,15 +13,24 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".VideoGridExampleActivity"
+            android:name=".app.VideoGridExampleActivity"
             android:exported="true"
+            android:hardwareAccelerated="true"
             android:theme="@style/Theme.Example.LeanbackVerticalGrid">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".media.VideoExampleActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Example.Leanback"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|layoutDirection"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true"/>
     </application>
 
 </manifest>

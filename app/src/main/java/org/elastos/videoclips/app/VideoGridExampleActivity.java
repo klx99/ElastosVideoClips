@@ -12,10 +12,12 @@
  * the License.
  */
 
-package org.elastos.videoclips;
+package org.elastos.videoclips.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import org.elastos.videoclips.R;
 
 /**
  * TODO: Javadoc

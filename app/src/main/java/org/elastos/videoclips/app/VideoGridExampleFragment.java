@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.elastos.videoclips;
+package org.elastos.videoclips.app;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,6 +20,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v17.leanback.app.VerticalGridFragment;
+
+import org.elastos.videoclips.R;
 import org.elastos.videoclips.cards.presenters.VideoCardViewPresenter;
 import android.support.v17.leanback.widget.ArrayObjectAdapter;
 import android.support.v17.leanback.widget.FocusHighlight;
