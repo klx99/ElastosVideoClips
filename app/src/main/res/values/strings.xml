@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ElastosVideoClips</string>
 
-    <string name="video_grid_example_title">Video Grid Example</string>
+    <string name="video_grid_example_title">Elastos Video Clipsx</string>
     <!--<string name="videos_url">https://storage.googleapis.com/android-tv/android_tv_videos_new.json</string>-->
     <!--<string name="videos_url">http://192.168.33.11/elastosvideoclips/titan_videos.json</string>-->
     <string name="videos_url">"file:///android_asset/titan_videos.json</string>

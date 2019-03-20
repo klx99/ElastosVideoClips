@@ -18,11 +18,20 @@ import android.content.Context;
 import org.elastos.videoclips.R;
 import org.elastos.videoclips.models.Card;
 import org.elastos.videoclips.models.VideoCard;
+import org.elastos.videoclips.utils.Utils;
+
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.media.MediaMetadataRetriever;
+import android.os.Build;
 import android.support.v17.leanback.widget.ImageCardView;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+
+import java.util.HashMap;
 
 /**
  * Presenter for rendering video cards on the Vertical Grid fragment.
@@ -41,11 +50,38 @@ public class VideoCardViewPresenter extends ImageCardViewPresenter {
     public void onBindViewHolder(Card card, final ImageCardView cardView) {
         super.onBindViewHolder(card, cardView);
         VideoCard videoCard = (VideoCard) card;
+
+        if(videoCard.getImageUrl() == null) {
+            loadImageFromVideo(videoCard.getVideoSources().get(0), cardView);
+            return;
+        }
+
         Glide.with(getContext())
                 .asBitmap()
                 .load(videoCard.getImageUrl())
                 .into(cardView.getMainImageView());
-
     }
 
+    private void loadImageFromVideo(String videoUrl, final ImageCardView cardView) {
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        try {
+            if (Build.VERSION.SDK_INT >= 14) {
+                retriever.setDataSource(videoUrl, new HashMap<String, String>());
+            } else {
+                retriever.setDataSource(videoUrl);
+            }
+            /*getFrameAtTime()--->在setDataSource()之后调用此方法。 如果可能，该方法在任何时间位置找到代表性的帧，
+             并将其作为位图返回。这对于生成输入数据源的缩略图很有用。**/
+            Bitmap bitmap = retriever.getFrameAtTime();
+
+            cardView.getMainImageView().setImageBitmap(bitmap);
+        } catch (IllegalArgumentException e) {
+            Log.w(Utils.TAG, "Failed to get video poster for url: " + videoUrl, e);
+        } finally {
+            try {
+                retriever.release();
+            } catch (IllegalArgumentException e) {
+            }
+        }
+    }
 }

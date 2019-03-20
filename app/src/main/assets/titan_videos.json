@@ -9,6 +9,13 @@
       "title": "bbb",
       "studio": null
     }, {
+      "title": "titan",
+      "description": "Titan Test",
+      "sources": ["http://qc-vss.waqucdn.com/5b55cfa9ec67c4438a37acd2/video/76F3A2B7692010E63C74DDC6AB9EFB76.mp4?auth_key=1552730008-0-0-7178f4a5615ab0102dba056d6153f490"],
+      "card": null,
+      "background": "https://storage.googleapis.com/android-tv/Sample%20videos/Google%2B/Google%2B_%20Instant%20Upload/bg.jpg",
+      "studio": null
+    }, {
       "description": "Jon introduces Instant Upload with a few thoughts on how we remember the things that matter. Check out some ways we've been rethinking real-life sharing for the web at plus.google.com",
       "sources": ["https://storage.googleapis.com/android-tv/Sample%20videos/Google%2B/Google%2B_%20Instant%20Upload.mp4"],
       "card": "https://storage.googleapis.com/android-tv/Sample%20videos/Google%2B/Google%2B_%20Instant%20Upload/card.jpg",
