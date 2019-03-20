@@ -27,6 +27,7 @@ task clean(type: Delete) {
 }
 
 ext {
+    javaVersion = JavaVersion.VERSION_1_8
     buildToolsVersion = "28.0.3"
     supportLibVersion = "26.1.0"
     archLifecycleVersion = "1.0.0"

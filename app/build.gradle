@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+    compileOptions {
+        sourceCompatibility = rootProject.javaVersion
+        targetCompatibility = rootProject.javaVersion
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "org.elastos.videoclips"
