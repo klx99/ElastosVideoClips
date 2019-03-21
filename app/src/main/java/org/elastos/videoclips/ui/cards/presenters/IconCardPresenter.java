@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.elastos.videoclips.cards.presenters;
+package org.elastos.videoclips.ui.cards.presenters;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

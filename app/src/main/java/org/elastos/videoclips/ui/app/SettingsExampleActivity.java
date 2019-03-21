@@ -12,10 +12,9 @@
  * the License.
  */
 
-package org.elastos.videoclips.app;
+package org.elastos.videoclips.ui.app;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
 import org.elastos.videoclips.R;
 

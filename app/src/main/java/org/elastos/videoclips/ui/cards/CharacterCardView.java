@@ -12,13 +12,13 @@
  * the License.
  */
 
-package org.elastos.videoclips.cards;
+package org.elastos.videoclips.ui.cards;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import org.elastos.videoclips.R;
-import org.elastos.videoclips.models.Card;
+import org.elastos.videoclips.ui.models.Card;
 import android.support.v17.leanback.widget.BaseCardView;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;

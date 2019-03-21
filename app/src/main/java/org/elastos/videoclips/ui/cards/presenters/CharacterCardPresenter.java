@@ -12,11 +12,11 @@
  * the License.
  */
 
-package org.elastos.videoclips.cards.presenters;
+package org.elastos.videoclips.ui.cards.presenters;
 
 import android.content.Context;
-import org.elastos.videoclips.cards.CharacterCardView;
-import org.elastos.videoclips.models.Card;
+import org.elastos.videoclips.ui.cards.CharacterCardView;
+import org.elastos.videoclips.ui.models.Card;
 
 /**
  * This Presenter is used to display the characters card row in the DetailView examples.

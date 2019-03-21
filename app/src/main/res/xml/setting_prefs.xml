@@ -2,7 +2,32 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:app="http://schemas.android.com/apk/res-auto"
                   android:summary="This is a dummy activitiy only to show case how to build a settings in an application. Changing configurations in this example doesn't affect anything."
-                  android:title="Settings Example">
+                  android:title="User Settings">
+    <PreferenceScreen android:key="prefs_key_did_info"
+        android:icon="@drawable/ic_settings_did"
+        android:title="DID">
+        <Preference android:key="prefs_key_did"
+            android:title="iDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"/>
+        <Preference android:key="prefs_did_props_key"
+            android:title="Property"/>
+
+        <PreferenceCategory android:key="prefs_key_did_wallet_info"
+            android:icon="@drawable/ic_settings_did"
+            android:title="Wallet"
+            android:selectable="false">
+            <Preference android:key="prefs_key_did_wallet_address"
+                android:summary="EWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+                android:selectable="false"/>
+            <Preference android:key="prefs_did_wallet_history_key"
+                android:title="History"/>
+        </PreferenceCategory>
+        <Preference
+            android:title="More..."
+            android:key="pref_key_did_more_info"/>
+    </PreferenceScreen>
+
+
+
     <PreferenceScreen
         android:icon="@drawable/ic_settings_wifi_4_bar"
         android:key="prefs_wifi_screen_key"

@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.elastos.videoclips.models;
+package org.elastos.videoclips.ui.models;
 
 import android.content.Context;
 import android.graphics.Color;

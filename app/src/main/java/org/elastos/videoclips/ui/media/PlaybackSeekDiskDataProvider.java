@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.elastos.videoclips.media;
+package org.elastos.videoclips.ui.media;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -13,14 +13,14 @@
  *
  */
 
-package org.elastos.videoclips.cards.presenters;
+package org.elastos.videoclips.ui.cards.presenters;
 
 import android.content.Context;
 import android.support.v17.leanback.widget.Presenter;
 import android.support.v17.leanback.widget.PresenterSelector;
 
 import org.elastos.videoclips.R;
-import org.elastos.videoclips.models.Card;
+import org.elastos.videoclips.ui.models.Card;
 
 import java.util.HashMap;
 

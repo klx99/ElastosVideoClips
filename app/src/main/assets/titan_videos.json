@@ -3,7 +3,7 @@
     "category": "Google+",
     "videos": [{
       "description": "aaa",
-      "sources": ["http://192.168.33.11/h5test/oceans.mp4"],
+      "sources": ["http://192.168.2.11/h5test/oceans.mp4"],
       "card": null,
       "background": null,
       "title": "bbb",

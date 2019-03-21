@@ -12,23 +12,20 @@
  * the License.
  */
 
-package org.elastos.videoclips.cards.presenters;
+package org.elastos.videoclips.ui.cards.presenters;
 
 import android.content.Context;
-import org.elastos.videoclips.R;
-import org.elastos.videoclips.models.Card;
-import org.elastos.videoclips.models.VideoCard;
+
+import org.elastos.videoclips.ui.models.Card;
+import org.elastos.videoclips.ui.models.VideoCard;
 import org.elastos.videoclips.utils.Utils;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.media.MediaMetadataRetriever;
 import android.os.Build;
 import android.support.v17.leanback.widget.ImageCardView;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
-import android.view.View;
-import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 
 import java.util.HashMap;

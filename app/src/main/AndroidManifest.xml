@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".app.VideoGridExampleActivity"
+            android:name=".ui.app.VideoGridExampleActivity"
             android:exported="true"
             android:hardwareAccelerated="true"
             android:theme="@style/Theme.Example.LeanbackVerticalGrid">
@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".media.VideoExampleActivity"
+            android:name=".ui.media.VideoExampleActivity"
             android:exported="true"
             android:theme="@style/Theme.Example.Leanback"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|layoutDirection"
@@ -33,7 +33,7 @@
             android:supportsPictureInPicture="true"/>
 
         <activity
-            android:name=".app.SettingsExampleActivity"
+            android:name=".ui.app.SettingsExampleActivity"
             android:exported="true"
             android:theme="@style/Theme.Example.LeanbackPreferences"/>
     </application>

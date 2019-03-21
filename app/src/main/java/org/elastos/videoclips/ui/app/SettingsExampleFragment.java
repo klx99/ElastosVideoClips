@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.elastos.videoclips.app;
+package org.elastos.videoclips.ui.app;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -35,7 +35,7 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
 
     @Override
     public void onPreferenceStartInitialScreen() {
-        startPreferenceFragment(buildPreferenceFragment(R.xml.prefs, null));
+        startPreferenceFragment(buildPreferenceFragment(R.xml.setting_prefs, null));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
     @Override
     public boolean onPreferenceStartScreen(PreferenceFragment preferenceFragment,
                                            PreferenceScreen preferenceScreen) {
-        PreferenceFragment frag = buildPreferenceFragment(R.xml.prefs, preferenceScreen.getKey());
+        PreferenceFragment frag = buildPreferenceFragment(R.xml.setting_prefs, preferenceScreen.getKey());
         startPreferenceFragment(frag);
         return true;
     }

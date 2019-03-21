@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.elastos.videoclips.media;
+package org.elastos.videoclips.ui.media;
 
 import android.content.Context;
 import android.media.AudioManager;

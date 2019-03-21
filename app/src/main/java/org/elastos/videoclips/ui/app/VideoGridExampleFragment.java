@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.elastos.videoclips.app;
+package org.elastos.videoclips.ui.app;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -22,7 +22,7 @@ import android.os.Handler;
 import android.support.v17.leanback.app.VerticalGridFragment;
 
 import org.elastos.videoclips.R;
-import org.elastos.videoclips.cards.presenters.VideoCardViewPresenter;
+
 import android.support.v17.leanback.widget.ArrayObjectAdapter;
 import android.support.v17.leanback.widget.FocusHighlight;
 import android.support.v17.leanback.widget.OnItemViewClickedListener;
@@ -37,11 +37,11 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import org.elastos.videoclips.cards.presenters.CardPresenterSelector;
-import org.elastos.videoclips.media.MediaMetaData;
-import org.elastos.videoclips.media.VideoExampleActivity;
-import org.elastos.videoclips.models.VideoCard;
-import org.elastos.videoclips.models.VideoRow;
+import org.elastos.videoclips.ui.cards.presenters.CardPresenterSelector;
+import org.elastos.videoclips.ui.media.MediaMetaData;
+import org.elastos.videoclips.ui.media.VideoExampleActivity;
+import org.elastos.videoclips.ui.models.VideoCard;
+import org.elastos.videoclips.ui.models.VideoRow;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,7 +51,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -12,11 +12,11 @@
  * the License.
  */
 
-package org.elastos.videoclips.cards.presenters;
+package org.elastos.videoclips.ui.cards.presenters;
 
 import android.content.Context;
-import org.elastos.videoclips.cards.TextCardView;
-import org.elastos.videoclips.models.Card;
+import org.elastos.videoclips.ui.cards.TextCardView;
+import org.elastos.videoclips.ui.models.Card;
 
 /**
  * The Presenter displays a card consisting of text as a replacement for a big image. The footer is

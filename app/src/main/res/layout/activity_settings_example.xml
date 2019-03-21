@@ -19,7 +19,7 @@
                 android:layout_height="match_parent">
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="org.elastos.videoclips.app.SettingsExampleFragment"
+        android:name="org.elastos.videoclips.ui.app.SettingsExampleFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></fragment>
 </RelativeLayout>
