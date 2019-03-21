@@ -36,6 +36,17 @@
             android:name=".ui.app.SettingsExampleActivity"
             android:exported="true"
             android:theme="@style/Theme.Example.LeanbackPreferences"/>
+
+        <activity
+            android:name=".ui.app.DialogExampleActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Example.LeanbackDialog"/>
+
+        <activity
+            android:name=".ui.app.QRCodeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Example.LeanbackDialog"/>
+
     </application>
 
 </manifest>

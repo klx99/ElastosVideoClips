@@ -14,11 +14,15 @@
 
 package org.elastos.videoclips.ui.app;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
 import org.elastos.videoclips.R;
+
+import android.support.v17.leanback.app.ErrorFragment;
 import android.support.v17.preference.LeanbackPreferenceFragment;
 import android.support.v17.preference.LeanbackSettingsFragment;
 import android.support.v7.preference.DialogPreference;
@@ -88,13 +92,21 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                 Toast.makeText(getActivity(), "Implement your own action handler.", Toast.LENGTH_SHORT).show();
                 return true;
             }
+            switch (preference.getKey()) {
+                case "prefs_key_did": {
+                    Intent intent = new Intent(getActivity(), QRCodeActivity.class);
+                    this.startActivity(intent);
+                    break;
+                }
+            }
+
             return super.onPreferenceTreeClick(preference);
         }
 
         @Override
-        public void onAttach(Context context) {
+        public void onAttach(Activity activity) {
             fragments.push(this);
-            super.onAttach(context);
+            super.onAttach(activity);
         }
 
         @Override

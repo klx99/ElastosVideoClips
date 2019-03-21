@@ -31,4 +31,9 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:colorPrimary">@color/settings_background</item>
     </style>
+
+    <style name="Theme.Example.LeanbackDialog" parent="Theme.Leanback.GuidedStep">
+        <item name="guidedActionsBackground">@color/app_guidedstep_dialog_actions_background</item>
+    </style>
+
 </resources>
