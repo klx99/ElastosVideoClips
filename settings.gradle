@@ -1,1 +1,3 @@
 include ':app'
+include ':thirdparty:ElastosSdkWallet'
+include ':thirdparty:Titan'
