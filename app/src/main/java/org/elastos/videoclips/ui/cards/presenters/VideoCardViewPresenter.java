@@ -72,7 +72,7 @@ public class VideoCardViewPresenter extends ImageCardViewPresenter {
             Bitmap bitmap = retriever.getFrameAtTime();
 
             cardView.getMainImageView().setImageBitmap(bitmap);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             Log.w(Utils.TAG, "Failed to get video poster for url: " + videoUrl, e);
         } finally {
             try {

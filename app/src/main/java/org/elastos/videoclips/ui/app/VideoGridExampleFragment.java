@@ -56,6 +56,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import vip.z4k.android.sdk.manager.BusinessManager;
+
 ///**
 // * Example fragment displaying videos in a vertical grid using {@link VerticalGridFragment}.
 // * It fetches the videos from the the url in {@link R.string.videos_url} and displays the metadata
@@ -236,8 +238,15 @@ public class VideoGridExampleFragment extends VerticalGridFragment implements
                 return;
             }
 
+            String videoSource = videoSources.get(0);
+            if(itemCard.getTitle().startsWith("titan")) {
+                videoSource = BusinessManager.getInstance().getP2PUrl("elastos", videoSource, "vod");
+            }
+            Toast.makeText(this.getActivity(), "URL: " + videoSource, Toast.LENGTH_LONG)
+                    .show();
+
             MediaMetaData metaData = new MediaMetaData();
-            metaData.setMediaSourcePath(videoSources.get(0));
+            metaData.setMediaSourcePath(videoSource);
             metaData.setMediaTitle(itemCard.getTitle());
             metaData.setMediaArtistName(itemCard.getDescription());
             metaData.setMediaAlbumArtUrl(itemCard.getImageUrl());
