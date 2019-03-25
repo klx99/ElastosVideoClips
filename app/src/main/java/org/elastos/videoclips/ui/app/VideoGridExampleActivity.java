@@ -15,6 +15,7 @@
 package org.elastos.videoclips.ui.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,12 @@ import org.elastos.videoclips.utils.Utils;
  * TODO: Javadoc
  */
 public class VideoGridExampleActivity extends Activity {
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+
+        Utils.setAppContext(this);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

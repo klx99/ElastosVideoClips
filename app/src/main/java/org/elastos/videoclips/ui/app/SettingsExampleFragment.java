@@ -18,9 +18,13 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
+
+import org.elastos.sdk.wallet.Did;
 import org.elastos.videoclips.R;
+import org.elastos.videoclips.did.DidInfo;
 
 import android.support.v17.leanback.app.ErrorFragment;
 import android.support.v17.preference.LeanbackPreferenceFragment;
@@ -28,6 +32,11 @@ import android.support.v17.preference.LeanbackSettingsFragment;
 import android.support.v7.preference.DialogPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -36,6 +45,24 @@ import java.util.Stack;
 public class SettingsExampleFragment extends LeanbackSettingsFragment implements DialogPreference.TargetFragment {
 
     private final Stack<Fragment> fragments = new Stack<Fragment>();
+    private FrameLayout mContentView;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        final ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
+
+        mContentView = new FrameLayout(this.getActivity());
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
+                this.getResources().getDisplayMetrics().widthPixels - this.getResources().getDimensionPixelSize(R.dimen.lb_settings_pane_width),
+                FrameLayout.LayoutParams.MATCH_PARENT
+        );
+//        mContentView.setBackgroundColor(Color.BLUE);
+        root.addView(mContentView, 0, layoutParams);
+
+        return root;
+    }
 
     @Override
     public void onPreferenceStartInitialScreen() {
@@ -71,6 +98,18 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
     }
 
     private class PrefFragment extends LeanbackPreferenceFragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            final ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
+            root.getViewTreeObserver().addOnGlobalFocusChangeListener((oldFocus, newFocus) -> {
+                mContentView.removeAllViews();
+
+//                Preference prefDidName = getPreferenceManager().findPreference("prefs_key_did_name");
+            });
+
+            return root;
+        }
 
         @Override
         public void onCreatePreferences(Bundle bundle, String s) {
@@ -81,6 +120,8 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
             } else {
                 setPreferencesFromResource(prefResId, root);
             }
+
+            updateChangedValues();
         }
 
         @Override
@@ -93,11 +134,19 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                 return true;
             }
             switch (preference.getKey()) {
-                case "prefs_key_did": {
-                    Intent intent = new Intent(getActivity(), QRCodeActivity.class);
-                    this.startActivity(intent);
+                case "prefs_key_did_name":
+                case "prefs_key_did_wallet_address":
+                case "prefs_key_did_account": {
+                    View view = this.getActivity().getLayoutInflater().inflate(R.layout.settings_qrcode, null);
+                    mContentView.addView(view);
                     break;
                 }
+                case "pref_key_did_account": {
+                    break;
+                }
+
+                default:
+                    break;
             }
 
             return super.onPreferenceTreeClick(preference);
@@ -113,6 +162,27 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
         public void onDetach() {
             fragments.pop();
             super.onDetach();
+        }
+
+        private void updateChangedValues() {
+            DidInfo didInfo = DidInfo.getInstance();
+
+            Preference prefDidName = getPreferenceManager().findPreference("prefs_key_did_name");
+            if(prefDidName != null) {
+                prefDidName.setSummary(didInfo.getDidName());
+            }
+
+            Preference prefWalletAddr = getPreferenceManager().findPreference("prefs_key_did_wallet_address");
+            if(prefWalletAddr != null) {
+                prefWalletAddr.setSummary(didInfo.getDidName());
+
+                DidInfo.CoinType coinType = DidInfo.CoinType.ELA;
+                if(prefWalletAddr.getParent().getKey().equals("prefs_key_did_didwallet")) {
+                    coinType = DidInfo.CoinType.DID;
+                }
+                Preference prefWalletBalance = getPreferenceManager().findPreference("prefs_key_did_wallet_balance");
+                prefWalletBalance.setSummary(didInfo.getWalletBalance(coinType));
+            }
         }
     }
 }

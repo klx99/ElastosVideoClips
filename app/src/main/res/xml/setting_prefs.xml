@@ -6,24 +6,63 @@
     <PreferenceScreen android:key="prefs_key_did_info"
         android:icon="@drawable/ic_settings_did"
         android:title="DID">
-        <Preference android:key="prefs_key_did"
-            android:title="iDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"/>
-        <Preference android:key="prefs_did_props_key"
+        <Preference android:key="prefs_key_did_name"
+            android:title="ID"
+            android:icon="@drawable/ic_settings_did"
+            android:summary=""/>
+        <Preference android:key="prefs_key_did_props"
+            android:icon="@drawable/ic_settings_did"
             android:title="Property"/>
 
-        <PreferenceCategory android:key="prefs_key_did_wallet_info"
-            android:icon="@drawable/ic_settings_did"
-            android:title="Wallet"
+        <PreferenceCategory android:key="prefs_key_did_wallets"
+            android:title="Wallets"
             android:selectable="false">
-            <Preference android:key="prefs_key_did_wallet_address"
-                android:summary="EWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-                android:selectable="false"/>
-            <Preference android:key="prefs_did_wallet_history_key"
-                android:title="History"/>
+            <PreferenceScreen
+                android:key="prefs_key_did_elawallet"
+                android:title="ELA Chain Wallet"
+                android:summary="0 ELA"
+                android:icon="@drawable/ic_settings_did" >
+                <Preference android:key="prefs_key_did_wallet_address"
+                    android:title="Address"
+                    android:summary=""
+                    android:icon="@drawable/ic_settings_did"/>
+                <Preference android:key="prefs_key_did_wallet_balance"
+                    android:title="Balance"
+                    android:summary="0 ELA"
+                    android:icon="@drawable/ic_settings_did"/>
+                <Preference android:key="prefs_key_did_wallet_history"
+                    android:title="History"
+                    android:icon="@drawable/ic_settings_did"/>
+            </PreferenceScreen>
+
+            <PreferenceScreen
+                android:key="prefs_key_did_didwallet"
+                android:title="ID Chain Wallet"
+                android:summary="0 Point"
+                android:icon="@drawable/ic_settings_did" >
+                <Preference android:key="prefs_key_did_wallet_address"
+                    android:title="Address"
+                    android:summary=""
+                    android:icon="@drawable/ic_settings_did"/>
+                <Preference android:key="prefs_key_did_wallet_balance"
+                    android:title="Balance"
+                    android:summary="0 ELA"
+                    android:icon="@drawable/ic_settings_did"/>
+                <Preference android:key="prefs_key_did_wallet_history"
+                    android:title="History"
+                    android:icon="@drawable/ic_settings_did"/>
+            </PreferenceScreen>
         </PreferenceCategory>
-        <Preference
+
+        <PreferenceCategory android:key="prefs_key_did_more"
             android:title="More..."
-            android:key="pref_key_did_more_info"/>
+            android:selectable="false">
+            <Preference
+                android:key="prefs_key_did_account"
+                android:title="Account"
+                android:icon="@drawable/ic_settings_did">
+            </Preference>
+        </PreferenceCategory>
     </PreferenceScreen>
 
 

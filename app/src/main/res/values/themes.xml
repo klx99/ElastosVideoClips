@@ -15,7 +15,7 @@
   -->
 <resources>
     <style name="Theme.Example.LeanbackVerticalGrid" parent="Theme.Leanback.VerticalGrid">
-        <item name="android:windowBackground">@drawable/background_food</item>
+        <item name="android:windowBackground">@drawable/elastos_background</item>
     </style>
 
     <style name="Theme.Example.Leanback" parent="Theme.Leanback">
