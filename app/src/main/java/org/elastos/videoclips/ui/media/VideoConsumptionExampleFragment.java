@@ -24,6 +24,7 @@ import android.support.v17.leanback.media.MediaPlayerAdapter;
 import android.support.v17.leanback.media.PlaybackGlue;
 import android.support.v17.leanback.widget.PlaybackControlsRow;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class VideoConsumptionExampleFragment extends VideoFragment {
@@ -61,9 +62,6 @@ public class VideoConsumptionExampleFragment extends VideoFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mMediaPlayerGlue = new VideoMediaPlayerGlue(getActivity(),
-                new MediaPlayerAdapter(getActivity()));
-        mMediaPlayerGlue.setHost(mHost);
         AudioManager audioManager = (AudioManager) getActivity()
                 .getSystemService(Context.AUDIO_SERVICE);
         if (audioManager.requestAudioFocus(mOnAudioFocusChangeListener, AudioManager.STREAM_MUSIC,
@@ -71,22 +69,33 @@ public class VideoConsumptionExampleFragment extends VideoFragment {
             Log.w(TAG, "video player cannot obtain audio focus!");
         }
 
-        mMediaPlayerGlue.setMode(PlaybackControlsRow.RepeatAction.NONE);
         MediaMetaData intentMetaData = getActivity().getIntent().getParcelableExtra(
                 VideoExampleActivity.TAG);
-        if (intentMetaData != null) {
-            mMediaPlayerGlue.setTitle(intentMetaData.getMediaTitle());
-            mMediaPlayerGlue.setSubtitle(intentMetaData.getMediaArtistName());
-            mMediaPlayerGlue.getPlayerAdapter().setDataSource(
-                    Uri.parse(intentMetaData.getMediaSourcePath()));
+        if(intentMetaData == null || intentMetaData.getAdvertisingUrl() != null) {
+            mMediaPlayerGlue = initPlayerGlue(intentMetaData.getAdvertisingUrl(), null, null);
+            final PlaybackGlue.PlayerCallback playerCallback = new PlaybackGlue.PlayerCallback() {
+                @Override
+                public void onPlayCompleted(PlaybackGlue glue) {
+                    if(intentMetaData == null) {
+                        return;
+                    }
+                    mMediaPlayerGlue = initPlayerGlue(
+                            intentMetaData.getMediaSourcePath(),
+                            intentMetaData.getMediaTitle(),
+                            intentMetaData.getMediaArtistName()
+                    );
+                }
+            };
+            mMediaPlayerGlue.addPlayerCallback(playerCallback);
+            mMediaPlayerGlue.setControlsOverlayAutoHideEnabled(false);
+            hideControlsOverlay(false);
         } else {
-            mMediaPlayerGlue.setTitle("Diving with Sharks");
-            mMediaPlayerGlue.setSubtitle("A Googler");
-            mMediaPlayerGlue.getPlayerAdapter().setDataSource(Uri.parse(URL));
+            mMediaPlayerGlue = initPlayerGlue(
+                    intentMetaData.getMediaSourcePath(),
+                    intentMetaData.getMediaTitle(),
+                    intentMetaData.getMediaArtistName()
+            );
         }
-        PlaybackSeekDiskDataProvider.setDemoSeekProvider(mMediaPlayerGlue);
-        playWhenReady(mMediaPlayerGlue);
-        setBackgroundType(BG_LIGHT);
     }
 
     @Override
@@ -97,4 +106,18 @@ public class VideoConsumptionExampleFragment extends VideoFragment {
         super.onPause();
     }
 
+    private VideoMediaPlayerGlue<MediaPlayerAdapter> initPlayerGlue(String url, String title, String artistName) {
+        VideoMediaPlayerGlue<MediaPlayerAdapter> mediaPlayerGlue = new VideoMediaPlayerGlue(getActivity(),
+                new MediaPlayerAdapter(getActivity()));
+        mediaPlayerGlue.setHost(mHost);
+        mediaPlayerGlue.setMode(PlaybackControlsRow.RepeatAction.NONE);
+        mediaPlayerGlue.setTitle(title);
+        mediaPlayerGlue.setSubtitle(artistName);
+        mediaPlayerGlue.getPlayerAdapter().setDataSource(Uri.parse(url));
+        PlaybackSeekDiskDataProvider.setDemoSeekProvider(mediaPlayerGlue);
+        playWhenReady(mediaPlayerGlue);
+        setBackgroundType(BG_LIGHT);
+
+        return mediaPlayerGlue;
+    }
 }

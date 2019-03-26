@@ -238,14 +238,17 @@ public class VideoGridExampleFragment extends VerticalGridFragment implements
                 return;
             }
 
+            MediaMetaData metaData = new MediaMetaData();
+
             String videoSource = videoSources.get(0);
             if(itemCard.getTitle().startsWith("titan")) {
                 videoSource = BusinessManager.getInstance().getP2PUrl("elastos", videoSource, "vod");
+                metaData.setAdvertisingUrl("file:///data/local/tmp/ElastosAd.mp4");
+
             }
             Toast.makeText(this.getActivity(), "URL: " + videoSource, Toast.LENGTH_LONG)
                     .show();
 
-            MediaMetaData metaData = new MediaMetaData();
             metaData.setMediaSourcePath(videoSource);
             metaData.setMediaTitle(itemCard.getTitle());
             metaData.setMediaArtistName(itemCard.getDescription());

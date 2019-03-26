@@ -32,6 +32,7 @@ public class MediaMetaData implements Parcelable{
     private String mMediaAlbumName;
     private int mMediaAlbumArtResId;
     private String mMediaAlbumArtUrl;
+    private String mAdvertisingUrl;
 
     MediaMetaData(Uri mediaSourceUri, String mediaSourcePath, String mediaTitle,
                   String mediaArtistName, String mediaAlbumName, int mediaAlbumArtResId,
@@ -56,6 +57,7 @@ public class MediaMetaData implements Parcelable{
         mMediaAlbumName = in.readString();
         mMediaAlbumArtResId = in.readInt();
         mMediaAlbumArtUrl = in.readString();
+        mAdvertisingUrl = in.readString();
     }
 
 
@@ -116,6 +118,14 @@ public class MediaMetaData implements Parcelable{
         mMediaAlbumArtUrl = mediaAlbumArtUrl;
     }
 
+    public void setAdvertisingUrl(String advertisingUrl) {
+        mAdvertisingUrl = advertisingUrl;
+    }
+
+    public String getAdvertisingUrl() {
+        return mAdvertisingUrl;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -130,6 +140,7 @@ public class MediaMetaData implements Parcelable{
         dest.writeString(mMediaAlbumName);
         dest.writeInt(mMediaAlbumArtResId);
         dest.writeString(mMediaAlbumArtUrl);
+        dest.writeString(mAdvertisingUrl);
     }
 
     public static final Parcelable.Creator<MediaMetaData> CREATOR = new Creator<MediaMetaData>() {
