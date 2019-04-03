@@ -1,4 +1,6 @@
 include ':app'
+include ':demo:logindemo'
+
 include ':thirdparty:Carrier'
 include ':thirdparty:ElastosSdkWallet'
 include ':thirdparty:Titan'
