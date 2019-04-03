@@ -28,15 +28,15 @@ public final class Logger {
 
         Log.i(TAG, msg);
 
-        assert(sRenderer != null);
-
-        CharSequence oldMsg = sRenderer.getText();
-        oldMsg = oldMsg + "\n\nI: " + msg;
-        sRenderer.setText(oldMsg);
+        if(sRenderer != null) {
+            CharSequence oldMsg = sRenderer.getText();
+            oldMsg = oldMsg + "\n\nI: " + msg;
+            sRenderer.setText(oldMsg);
+        }
     }
 
     public static void error(String msg) {
-        if(Looper.myLooper() != Looper.getMainLooper()) {
+        if (Looper.myLooper() != Looper.getMainLooper()) {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(() -> {
                 error(msg);
@@ -46,11 +46,11 @@ public final class Logger {
 
         Log.e(TAG, msg);
 
-        assert(sRenderer != null);
-
-        CharSequence oldMsg = sRenderer.getText();
-        oldMsg = oldMsg + "\n\nE: " + msg;
-        sRenderer.setText(oldMsg);
+        if(sRenderer != null) {
+            CharSequence oldMsg = sRenderer.getText();
+            oldMsg = oldMsg + "\n\nE: " + msg;
+            sRenderer.setText(oldMsg);
+        }
     }
 
     public static void error(String msg, Throwable tr) {
@@ -64,14 +64,14 @@ public final class Logger {
 
         Log.e(TAG, msg, tr);
 
-        assert(sRenderer != null);
-
-        CharSequence oldMsg = sRenderer.getText();
-        oldMsg = oldMsg + "\n\nE: " + msg;
-        StringWriter writer = new StringWriter();
-        tr.printStackTrace(new PrintWriter(writer));
-        oldMsg = oldMsg + "\nExcepton: " + writer.toString();
-        sRenderer.setText(oldMsg);
+        if(sRenderer != null) {
+            CharSequence oldMsg = sRenderer.getText();
+            oldMsg = oldMsg + "\n\nE: " + msg;
+            StringWriter writer = new StringWriter();
+            tr.printStackTrace(new PrintWriter(writer));
+            oldMsg = oldMsg + "\nExcepton: " + writer.toString();
+            sRenderer.setText(oldMsg);
+        }
     }
 
     public static void clear() {
@@ -83,10 +83,10 @@ public final class Logger {
             return;
         }
 
-        assert(sRenderer != null);
-
-        sRenderer.setText("");
-        sRenderer.scrollTo(0, 0);
+        if(sRenderer != null) {
+            sRenderer.setText("");
+            sRenderer.scrollTo(0, 0);
+        }
     }
 
     private static TextView sRenderer = null;

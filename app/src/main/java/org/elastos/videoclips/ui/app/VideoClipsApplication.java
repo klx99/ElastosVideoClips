@@ -3,6 +3,7 @@ package org.elastos.videoclips.ui.app;
 import android.app.Application;
 
 import org.elastos.thirdparty.carrier.CarrierHelper;
+import org.elastos.videoclips.utils.Utils;
 
 import vip.z4k.android.sdk.manager.SdkManager;
 
@@ -10,6 +11,8 @@ public class VideoClipsApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Utils.setAppContext(this);
 
         // init carrier sdk
         CarrierHelper.startCarrier(this);

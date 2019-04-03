@@ -43,11 +43,6 @@
             android:exported="true"
             android:theme="@style/Theme.Example.LeanbackDialog"/>
 
-        <activity
-            android:name=".ui.app.QRCodeActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Example.LeanbackDialog"/>
-
     </application>
 
 </manifest>

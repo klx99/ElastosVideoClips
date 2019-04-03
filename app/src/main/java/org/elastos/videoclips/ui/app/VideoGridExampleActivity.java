@@ -28,12 +28,6 @@ import org.elastos.videoclips.utils.Utils;
  * TODO: Javadoc
  */
 public class VideoGridExampleActivity extends Activity {
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
-
-        Utils.setAppContext(this);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

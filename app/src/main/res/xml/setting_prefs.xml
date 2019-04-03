@@ -57,11 +57,18 @@
         <PreferenceCategory android:key="prefs_key_did_more"
             android:title="More..."
             android:selectable="false">
-            <Preference
-                android:key="prefs_key_did_account"
-                android:title="Account"
-                android:icon="@drawable/ic_settings_did">
-            </Preference>
+            <PreferenceScreen
+                android:key="prefs_key_did_changeaccount"
+                android:title="Change Account"
+                android:icon="@drawable/ic_settings_did" >
+                <Preference android:key="prefs_key_did_account_by_carrier"
+                    android:title="Login by Carrier"
+                    android:icon="@drawable/ic_settings_did"/>
+                <Preference android:key="prefs_key_did_account_by_other"
+                    android:title="Login by Other"
+                    android:icon="@drawable/ic_settings_did"/>
+            </PreferenceScreen>
+
         </PreferenceCategory>
     </PreferenceScreen>
 
