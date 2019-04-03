@@ -16,31 +16,26 @@ package org.elastos.videoclips.ui.app;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
 
-import org.elastos.sdk.wallet.Did;
 import org.elastos.thirdparty.carrier.CarrierHelper;
 import org.elastos.videoclips.R;
 import org.elastos.videoclips.did.DidInfo;
+import org.elastos.videoclips.ui.account.LoginByCarrier;
 import org.elastos.videoclips.utils.Utils;
 
-import android.support.v17.leanback.app.ErrorFragment;
 import android.support.v17.preference.LeanbackPreferenceFragment;
 import android.support.v17.preference.LeanbackSettingsFragment;
 import android.support.v7.preference.DialogPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -107,6 +102,7 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                                  Bundle savedInstanceState) {
             final ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
             root.getViewTreeObserver().addOnGlobalFocusChangeListener((oldFocus, newFocus) -> {
+                LoginByCarrier.hideLoginView();
                 mContentView.removeAllViews();
             });
 
@@ -139,18 +135,17 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                 case "prefs_key_did_name": {
                     DidInfo didInfo = DidInfo.getInstance();
                     String didName = didInfo.getDidName();
-                    showQRCodeView("DID", didName);
+                    Utils.showQRCodeView(mContentView, "DID", didName);
                     break;
                 }
                 case "prefs_key_did_wallet_address": {
                     DidInfo didInfo = DidInfo.getInstance();
                     String walletAddress = didInfo.getWalletAddress(DidInfo.CoinType.ELA);
-                    showQRCodeView("Wallet Address", walletAddress);
+                    Utils.showQRCodeView(mContentView, "Wallet Address", walletAddress);
                     break;
                 }
                 case "prefs_key_did_account_by_carrier": {
-                    String carrierAddress = CarrierHelper.getAddress();
-                    showQRCodeView("Carrier Address", carrierAddress);
+                    LoginByCarrier.showLoginView(mContentView);
                     break;
                 }
 
@@ -193,15 +188,6 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                 Preference prefWalletBalance = getPreferenceManager().findPreference("prefs_key_did_wallet_balance");
                 prefWalletBalance.setSummary(didInfo.getWalletBalance(coinType));
             }
-        }
-
-        private void showQRCodeView(String title, String qrcodeString) {
-            Bitmap qrcodeBitmap = Utils.makeQRCodeBitmap(qrcodeString);
-
-            QRCodeView view = new QRCodeView(this.getActivity());
-            view.setTitle(title);
-            view.setQRCode(qrcodeBitmap);
-            mContentView.addView(view);
         }
     }
 }

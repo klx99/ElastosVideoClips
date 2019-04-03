@@ -2,8 +2,8 @@ package org.elastos.thirdparty.carrier;
 
 import android.content.Context;
 
+import org.elastos.carrier.AbstractCarrierHandler;
 import org.elastos.carrier.Carrier;
-import org.elastos.carrier.CarrierHandler;
 import org.elastos.carrier.FriendInfo;
 
 import java.util.List;
@@ -15,9 +15,9 @@ public final class CarrierHelper {
         try {
             String dir = context.getFilesDir().getAbsolutePath();
             Carrier.Options options = new DefaultCarrierOptions(dir);
-            CarrierHandler handler = new DefaultCarrierHandler();
+            sCarrierHandler = new DefaultCarrierHandler();
 
-            Carrier.initializeInstance(options, handler);
+            Carrier.initializeInstance(options, sCarrierHandler);
             Carrier carrier = Carrier.getInstance();
 
             String addr = carrier.getAddress();
@@ -114,7 +114,13 @@ public final class CarrierHelper {
         return sPeerUserId;
     }
 
+    public static void setEventListener(AbstractCarrierHandler listener) {
+        sCarrierHandler.setEventListener(listener);
+    }
+
     private static String sPeerUserId = null;
+
+    private static DefaultCarrierHandler sCarrierHandler = null;
 
     private static final String CARRIER_HELLO_AUTH = "auto-auth";
 }

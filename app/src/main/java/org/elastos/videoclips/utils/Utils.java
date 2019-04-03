@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
+import android.view.ViewGroup;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -11,6 +12,8 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
+import org.elastos.videoclips.ui.app.QRCodeView;
 
 import java.util.HashMap;
 
@@ -23,6 +26,17 @@ public class Utils {
 
     public static Context getAppContext() {
         return mContext;
+    }
+
+    public static QRCodeView showQRCodeView(ViewGroup contentView, String title, String qrcodeString) {
+        Bitmap qrcodeBitmap = Utils.makeQRCodeBitmap(qrcodeString);
+
+        QRCodeView view = new QRCodeView(contentView.getContext());
+        view.setTitle(title);
+        view.setQRCode(qrcodeBitmap);
+        contentView.addView(view);
+
+        return view;
     }
 
     public static Bitmap makeQRCodeBitmap(String content) {

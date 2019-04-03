@@ -21,6 +21,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v17.leanback.app.GuidedStepFragment;
 import android.view.Gravity;
 import android.view.View;
@@ -56,15 +58,24 @@ public class QRCodeView extends LinearLayout {
     }
 
     public void setTitle(String title) {
-        this.title.setText(title);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(() ->
+                this.title.setText(title)
+        );
     }
 
     public void setQRCode(Bitmap bitmap) {
-        qrcode.setImageBitmap(bitmap);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(() ->
+                qrcode.setImageBitmap(bitmap)
+        );
     }
 
     public void setStatus(String status) {
-        this.status.setText(status);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(() ->
+                this.status.setText(status)
+        );
     }
 
     private TextView title;

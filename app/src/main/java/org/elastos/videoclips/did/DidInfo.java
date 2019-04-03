@@ -49,6 +49,17 @@ public class DidInfo {
         mSyncThread.start();
     }
 
+    public static boolean checkMnemonic(String mnemonic, String language) {
+        try {
+            String seed = IdentityManager.getSeed(mnemonic, language, "", "");
+            if(seed != null && seed.isEmpty() == false) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+
+        return false;
+    }
 
     public synchronized String getDidName() {
         if(mDid == null) {
