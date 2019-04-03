@@ -49,7 +49,9 @@ public class VideoCardViewPresenter extends ImageCardViewPresenter {
         VideoCard videoCard = (VideoCard) card;
 
         if(videoCard.getImageUrl() == null) {
-            loadImageFromVideo(videoCard.getVideoSources().get(0), cardView);
+            new Thread(() -> {
+                loadImageFromVideo(videoCard.getVideoSources().get(0), cardView);
+            }).start();
             return;
         }
 
