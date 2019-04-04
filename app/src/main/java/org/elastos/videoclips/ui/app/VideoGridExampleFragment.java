@@ -241,7 +241,7 @@ public class VideoGridExampleFragment extends VerticalGridFragment implements
             MediaMetaData metaData = new MediaMetaData();
 
             String videoSource = videoSources.get(0);
-            if(itemCard.getDescription().contains("(Cached)")) {
+            if(itemCard.getDescription().contains("CDN + P2P")) {
                 videoSource = BusinessManager.getInstance().getP2PUrl("elastos", videoSource, "vod");
                 metaData.setAdvertisingUrl("file:///data/local/tmp/ElastosAd.mp4");
 

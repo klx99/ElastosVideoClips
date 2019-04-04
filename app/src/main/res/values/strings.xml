@@ -4,7 +4,7 @@
     <string name="video_grid_example_title">Elastos Video Clips</string>
     <!--<string name="videos_url">https://storage.googleapis.com/android-tv/android_tv_videos_new.json</string>-->
     <!--<string name="videos_url">http://192.168.33.11/elastosvideoclips/titan_videos.json</string>-->
-    <string name="videos_url">"file:///android_asset/titan_videos.json</string>
+    <string name="videos_url">"file:///android_asset/videolist.json</string>
 
     <string name="dialog_example_title">Use Google\'s location service?</string>o
     <string name="dialog_example_description">Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</string>
