@@ -11,7 +11,7 @@ import java.io.StringWriter;
 public final class Logger {
     private Logger() {}
 
-    public static final String TAG = "CarrierDemo";
+    public static final String TAG = "carrier";
 
     public static void init(TextView renderer) {
         sRenderer = renderer;

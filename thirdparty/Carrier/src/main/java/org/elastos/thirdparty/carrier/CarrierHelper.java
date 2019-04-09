@@ -66,6 +66,8 @@ public final class CarrierHelper {
             String userId = Carrier.getIdFromAddress(peerAddr);
             if(Carrier.getInstance().isFriend(userId)) {
                 Logger.info("Carrier ignore to add friend address: " + peerAddr);
+                FriendInfo info = Carrier.getInstance().getFriend(userId);
+                sCarrierHandler.onFriendAdded(Carrier.getInstance(), info);
                 return;
             }
 

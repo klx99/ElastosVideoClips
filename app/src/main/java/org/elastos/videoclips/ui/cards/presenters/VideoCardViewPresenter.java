@@ -23,6 +23,8 @@ import org.elastos.videoclips.utils.Utils;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v17.leanback.widget.ImageCardView;
 import android.util.Log;
 
@@ -73,7 +75,10 @@ public class VideoCardViewPresenter extends ImageCardViewPresenter {
              并将其作为位图返回。这对于生成输入数据源的缩略图很有用。**/
             Bitmap bitmap = retriever.getFrameAtTime();
 
-            cardView.getMainImageView().setImageBitmap(bitmap);
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(() -> {
+                cardView.getMainImageView().setImageBitmap(bitmap);
+            });
         } catch (Exception e) {
             Log.w(Utils.TAG, "Failed to get video poster for url: " + videoUrl, e);
         } finally {

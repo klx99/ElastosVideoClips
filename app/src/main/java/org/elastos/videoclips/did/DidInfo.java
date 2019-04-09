@@ -6,6 +6,7 @@ import org.elastos.sdk.wallet.DidManager;
 import org.elastos.sdk.wallet.HDWallet;
 import org.elastos.sdk.wallet.Identity;
 import org.elastos.sdk.wallet.IdentityManager;
+import org.elastos.videoclips.ui.account.AccountInfo;
 import org.elastos.videoclips.utils.Utils;
 
 public class DidInfo {
@@ -26,6 +27,15 @@ public class DidInfo {
     private static DidInfo mDidInfo = null;
     private DidInfo() {
         mIdentity = IdentityManager.createIdentity(Utils.getAppContext().getFilesDir().getAbsolutePath());
+        AccountInfo.setAccountListener(() -> {
+            mDid = null;
+            for(int idx = 0; idx < mWalletArray.length; idx++) {
+             mWalletArray[idx] = null;
+            }
+            if(mOnDidListener != null) {
+                mOnDidListener.onDidChanged();
+            }
+        });
 
         mSyncThread = new Thread(() -> {
             while (true) {
@@ -47,6 +57,19 @@ public class DidInfo {
             }
         });
         mSyncThread.start();
+    }
+
+    public interface OnDidListener {
+        void onDidChanged();
+    }
+
+    public void setDidListener(OnDidListener listener) {
+        mOnDidListener = listener;
+    }
+
+    public static String generateMnemonic(String language) {
+        String mnemonic = IdentityManager.getMnemonic(language, "");
+        return mnemonic;
     }
 
     public static boolean checkMnemonic(String mnemonic, String language) {
@@ -106,21 +129,18 @@ public class DidInfo {
     }
 
     private synchronized String getSeed() {
-        final String language = "english";
-        if(mMnemonic == null) {
-            mMnemonic = IdentityManager.getMnemonic(language, "");
-        }
+        String mnemonic = AccountInfo.loadMnemonic();
+        String language = AccountInfo.loadLanguage();
 
-        String seed = IdentityManager.getSeed(mMnemonic, language, "", "");
-
+        String seed = IdentityManager.getSeed(mnemonic, language, "", "");
         return seed;
     }
 
     private Thread mSyncThread;
-    private String mMnemonic;
     private Identity mIdentity;
     private Did mDid;
     private HDWallet[] mWalletArray = new HDWallet[CoinType.values().length];
+    private OnDidListener mOnDidListener;
 
     private final long OneELA = 100000000; // 1 ELA = 100000000 SELA
     private final String[] BlockChainNodeURL = new String[] {

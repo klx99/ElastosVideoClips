@@ -17,7 +17,8 @@
             android:name=".ui.app.VideoGridExampleActivity"
             android:exported="true"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.Example.LeanbackVerticalGrid">
+            android:theme="@style/Theme.Example.LeanbackVerticalGrid"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,17 +32,20 @@
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|layoutDirection"
             android:launchMode="singleTask"
             android:resizeableActivity="true"
-            android:supportsPictureInPicture="true"/>
+            android:supportsPictureInPicture="true"
+            android:screenOrientation="landscape"/>
 
         <activity
             android:name=".ui.app.SettingsExampleActivity"
             android:exported="true"
-            android:theme="@style/Theme.Example.LeanbackPreferences"/>
+            android:theme="@style/Theme.Example.LeanbackPreferences"
+            android:screenOrientation="landscape"/>
 
         <activity
             android:name=".ui.app.DialogExampleActivity"
             android:exported="true"
-            android:theme="@style/Theme.Example.LeanbackDialog"/>
+            android:theme="@style/Theme.Example.LeanbackDialog"
+            android:screenOrientation="landscape"/>
 
     </application>
 

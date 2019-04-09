@@ -16,11 +16,9 @@ package org.elastos.videoclips.ui.app;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
 
-import org.elastos.thirdparty.carrier.CarrierHelper;
 import org.elastos.videoclips.R;
 import org.elastos.videoclips.did.DidInfo;
 import org.elastos.videoclips.ui.account.LoginByCarrier;
@@ -30,8 +28,8 @@ import android.support.v17.preference.LeanbackPreferenceFragment;
 import android.support.v17.preference.LeanbackSettingsFragment;
 import android.support.v7.preference.DialogPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +41,8 @@ import java.util.Stack;
 
 public class SettingsExampleFragment extends LeanbackSettingsFragment implements DialogPreference.TargetFragment {
 
-    private final Stack<Fragment> fragments = new Stack<Fragment>();
+    private final Stack<PreferenceFragment> fragments = new Stack<>();
     private FrameLayout mContentView;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,7 +99,7 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                                  Bundle savedInstanceState) {
             final ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
             root.getViewTreeObserver().addOnGlobalFocusChangeListener((oldFocus, newFocus) -> {
-                LoginByCarrier.hideLoginView();
+                LoginByCarrier.getInstance(this.getActivity()).hideLoginView();
                 mContentView.removeAllViews();
             });
 
@@ -119,7 +116,14 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                 setPreferencesFromResource(prefResId, root);
             }
 
-            updateChangedValues();
+            updateChangedValues(this.getPreferenceManager());
+
+            DidInfo.getInstance().setDidListener(() -> {
+                for(PreferenceFragment prefFragment: fragments) {
+                    PreferenceManager rootPrefMgr = prefFragment.getPreferenceManager();
+                    updateChangedValues(rootPrefMgr);
+                }
+            });
         }
 
         @Override
@@ -145,7 +149,7 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
                     break;
                 }
                 case "prefs_key_did_account_by_carrier": {
-                    LoginByCarrier.showLoginView(mContentView);
+                    LoginByCarrier.getInstance(this.getActivity()).showLoginView(mContentView);
                     break;
                 }
 
@@ -168,10 +172,10 @@ public class SettingsExampleFragment extends LeanbackSettingsFragment implements
             super.onDetach();
         }
 
-        private void updateChangedValues() {
+        private void updateChangedValues(PreferenceManager prefMgr) {
             DidInfo didInfo = DidInfo.getInstance();
 
-            Preference prefDidName = getPreferenceManager().findPreference("prefs_key_did_name");
+            Preference prefDidName = prefMgr.findPreference("prefs_key_did_name");
             if(prefDidName != null) {
                 prefDidName.setSummary(didInfo.getDidName());
             }

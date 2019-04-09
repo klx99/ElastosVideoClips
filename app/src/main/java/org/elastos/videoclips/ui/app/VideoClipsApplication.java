@@ -15,7 +15,7 @@ public class VideoClipsApplication extends Application {
         Utils.setAppContext(this);
 
         // init carrier sdk
-        CarrierHelper.startCarrier(this);
+//        CarrierHelper.startCarrier(this);
 
         // init titan sdk
         final int customerId = 0x45A0EADD;

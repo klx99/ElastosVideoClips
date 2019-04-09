@@ -48,37 +48,37 @@ public class QRCodeView extends LinearLayout {
 
         this.setOrientation(LinearLayout.VERTICAL);
 
-        title = new TextView(context);
-        this.addView(title);
-        qrcode = new ImageView(context);
-        this.addView(qrcode);
-        status = new TextView(context);
-        this.addView(status);
-        status.setText("Please scan this QRCode.");
+        mTitle = new TextView(context);
+        this.addView(mTitle);
+        mQRCode = new ImageView(context);
+        this.addView(mQRCode);
+        mStatus = new TextView(context);
+        this.addView(mStatus);
+        mStatus.setText("Please scan this QRCode.");
     }
 
     public void setTitle(String title) {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(() ->
-                this.title.setText(title)
+                mTitle.setText(title)
         );
     }
 
     public void setQRCode(Bitmap bitmap) {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(() ->
-                qrcode.setImageBitmap(bitmap)
+                mQRCode.setImageBitmap(bitmap)
         );
     }
 
     public void setStatus(String status) {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(() ->
-                this.status.setText(status)
+                mStatus.setText(status)
         );
     }
 
-    private TextView title;
-    private ImageView qrcode;
-    private TextView status;
+    private TextView mTitle;
+    private ImageView mQRCode;
+    private TextView mStatus;
 }

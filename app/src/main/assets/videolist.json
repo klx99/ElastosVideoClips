@@ -4,112 +4,56 @@
     "videos": [{
       "title": "The Modern Internet",
       "description": "Elastos (CDN + P2P)",
-      "sources": ["https://download.elastos.org/videos/Elastos-The%20Modern%20Internet.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/TheModernInternet.mp4"],
       "card": null,
       "background": null,
       "studio": null
     }, {
       "title": "20180925",
       "description": "Elastos (CDN + P2P)",
-      "sources": ["https://download.elastos.org/videos/elastos-20180925.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/Elastos-20180925.mp4"],
       "card": null,
       "background": null,
       "studio": null
     }, {
       "title": "Change The World Forever",
       "description": "Elastos (CDN + P2P)",
-      "sources": ["https://download.elastos.org/videos/Cyber%20Republic%20-%20Change%20The%20World%20Forever.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/ChangeTheWorldForever.mp4"],
       "card": null,
       "background": null,
       "studio": null
     }, {
-      "title": "Welcome to Elastos!",
+      "title": "Welcome to Elastos",
       "description": "Elastos (CDN + P2P)",
-      "sources": ["https://download.elastos.org/videos/Welcome%20to%20Elastos!.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/WelcometoElastos.mp4"],
       "card": null,
       "background": null,
       "studio": null
     }, {
       "title": "The Modern Internet",
       "description": "Elastos (CDN)",
-      "sources": ["https://download.elastos.org/videos/Elastos-The%20Modern%20Internet.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/TheModernInternet.mp4"],
       "card": null,
       "background": null,
       "studio": null
     }, {
       "title": "20180925",
       "description": "Elastos (CDN)",
-      "sources": ["https://download.elastos.org/videos/elastos-20180925.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/Elastos-20180925.mp4"],
       "card": null,
       "background": null,
       "studio": null
     }, {
       "title": "Change The World Forever",
       "description": "Elastos (CDN)",
-      "sources": ["https://download.elastos.org/videos/Cyber%20Republic%20-%20Change%20The%20World%20Forever.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/ChangeTheWorldForever.mp4"],
       "card": null,
       "background": null,
       "studio": null
     }, {
-      "title": "Welcome to Elastos!",
+      "title": "Welcome to Elastos",
       "description": "Elastos (CDN)",
-      "sources": ["https://download.elastos.org/videos/Welcome%20to%20Elastos!.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "The Modern Internet",
-      "description": "OneDrive (CDN + P2P)",
-      "sources": ["https://uypcna.dm.files.1drv.com/y4m_Z78oXUT-7-fRvupPzQDzzvUtK1aovXS8b8BAO7cVXuEWJJ4J5b-m--5m39QPzQJieBGxWOB_HEQmdbuFqo09XC2h1JD7QTDhiPdcbg8jz0vljI1NXHMCB27iZGR7GPzpCoQVF5iK_BVsOjht0Lf0gJIV37ubUDy9GyS-fXh-9dCTq142wt_10TnfnoEFz32tZYcQIwEpm0eo_seWR9Sfg/Elastos-The%20Modern%20Internet.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "20180925",
-      "description": "OneDrive (CDN + P2P)",
-      "sources": ["https://uy9hia.dm.files.1drv.com/y4mCDYmq_zGfhKYiY01FCWMLPrVsYOlYWfZKhzQ3H2RnqETZidOqimkhG51HaSudrErZKw_wFIYlJo-T8mUmbbt_roER8CraONSU8t5602f_06EEAB2c-_dVLtrpFvI0rRpoy7JNkufO60V-8A_HJHl1LL1ApIVO6ylZ9E3V0hBM7d0kHSph1celVf2pdkOsNFhxhJ9QngTG0U3pe4KQMNP-w/elastos-20180925.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "Change The World Forever",
-      "description": "OneDrive (CDN + P2P)",
-      "sources": ["https://hhvi2a.dm.files.1drv.com/y4mEDjua8_kJS1e6tfTT3z74l1gJqExLQwYDgLUaTRLlFnvFybqKsMqyKpV7nfW1lQhBIEg8RNHl5S6nHBf2Hu5Y2mA3nQ9ZXE6tTP_eSIec4sgInkn5ffIob0aRWFygFY17HWiqmYQ0U02F3ZIKzDXynNlzQfVeNoo58Rc8swdVisYnXAv1cwmpLwVNCTxwveRY1mfiFLYBzVshRgh7pyPmQ/Cyber%20Republic%20-%20Change%20The%20World%20Forever.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "Welcome to Elastos!",
-      "description": "OneDrive (CDN + P2P)",
-      "sources": ["https://hht9tq.dm.files.1drv.com/y4mNBNz_j8eXwkShPszSr_DdVWQYg5Gv8wCj9wQtegR4WXeqeZ2EEmL1UKbSf9NfHvhm2qYOH6TDjg8JpjZXVVo6OEUleK92R07RwxoctAAqbeWpN_2WRWbmljgu7pVcIDLVaC7R5yMDjFyv8In03_EEQgNU2Hl8vPQG7ZXsywMe9nA09sVZXIRZBFtku7OVrYwoNr_N8GnUFvZO1iQAWUyFw/Welcome%20to%20Elastos%21.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "The Modern Internet",
-      "description": "OneDrive (CDN)",
-      "sources": ["https://uypcna.dm.files.1drv.com/y4m_Z78oXUT-7-fRvupPzQDzzvUtK1aovXS8b8BAO7cVXuEWJJ4J5b-m--5m39QPzQJieBGxWOB_HEQmdbuFqo09XC2h1JD7QTDhiPdcbg8jz0vljI1NXHMCB27iZGR7GPzpCoQVF5iK_BVsOjht0Lf0gJIV37ubUDy9GyS-fXh-9dCTq142wt_10TnfnoEFz32tZYcQIwEpm0eo_seWR9Sfg/Elastos-The%20Modern%20Internet.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "20180925",
-      "description": "OneDrive (CDN)",
-      "sources": ["https://uy9hia.dm.files.1drv.com/y4mCDYmq_zGfhKYiY01FCWMLPrVsYOlYWfZKhzQ3H2RnqETZidOqimkhG51HaSudrErZKw_wFIYlJo-T8mUmbbt_roER8CraONSU8t5602f_06EEAB2c-_dVLtrpFvI0rRpoy7JNkufO60V-8A_HJHl1LL1ApIVO6ylZ9E3V0hBM7d0kHSph1celVf2pdkOsNFhxhJ9QngTG0U3pe4KQMNP-w/elastos-20180925.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "Change The World Forever",
-      "description": "OneDrive (CDN)",
-      "sources": ["https://hhvi2a.dm.files.1drv.com/y4mEDjua8_kJS1e6tfTT3z74l1gJqExLQwYDgLUaTRLlFnvFybqKsMqyKpV7nfW1lQhBIEg8RNHl5S6nHBf2Hu5Y2mA3nQ9ZXE6tTP_eSIec4sgInkn5ffIob0aRWFygFY17HWiqmYQ0U02F3ZIKzDXynNlzQfVeNoo58Rc8swdVisYnXAv1cwmpLwVNCTxwveRY1mfiFLYBzVshRgh7pyPmQ/Cyber%20Republic%20-%20Change%20The%20World%20Forever.mp4"],
-      "card": null,
-      "background": null,
-      "studio": null
-    }, {
-      "title": "Welcome to Elastos!",
-      "description": "OneDrive (CDN)",
-      "sources": ["https://hht9tq.dm.files.1drv.com/y4mNBNz_j8eXwkShPszSr_DdVWQYg5Gv8wCj9wQtegR4WXeqeZ2EEmL1UKbSf9NfHvhm2qYOH6TDjg8JpjZXVVo6OEUleK92R07RwxoctAAqbeWpN_2WRWbmljgu7pVcIDLVaC7R5yMDjFyv8In03_EEQgNU2Hl8vPQG7ZXsywMe9nA09sVZXIRZBFtku7OVrYwoNr_N8GnUFvZO1iQAWUyFw/Welcome%20to%20Elastos%21.mp4"],
+      "sources": ["http://oss.image.qcast.cn/elasotsvideos/WelcometoElastos.mp4"],
       "card": null,
       "background": null,
       "studio": null

@@ -6,12 +6,14 @@ import org.elastos.carrier.ConnectionStatus;
 import org.elastos.carrier.FriendInfo;
 import org.elastos.carrier.UserInfo;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class DefaultCarrierHandler extends AbstractCarrierHandler {
     @Override
     public void onConnection(Carrier carrier, ConnectionStatus status) {
         Logger.info("Carrier connection status: " + status);
+        mConnectionStatus = status;
 
         if(status == ConnectionStatus.Connected) {
             String msg = "Friend List:";
@@ -24,8 +26,8 @@ public class DefaultCarrierHandler extends AbstractCarrierHandler {
             Logger.info(msg);
         }
 
-        if(eventListener != null) {
-            eventListener.onConnection(carrier, status);
+        if(mEventListener != null) {
+            mEventListener.onConnection(carrier, status);
         }
     }
 
@@ -34,8 +36,8 @@ public class DefaultCarrierHandler extends AbstractCarrierHandler {
         Logger.info("Carrier received friend request. peer UserId: " + userId);
         CarrierHelper.acceptFriend(userId, hello);
 
-        if(eventListener != null) {
-            eventListener.onFriendRequest(carrier, userId, info, hello);
+        if(mEventListener != null) {
+            mEventListener.onFriendRequest(carrier, userId, info, hello);
         }
     }
 
@@ -43,22 +45,24 @@ public class DefaultCarrierHandler extends AbstractCarrierHandler {
     public void onFriendAdded(Carrier carrier, FriendInfo info) {
         Logger.info("Carrier friend added. peer UserId: " + info.getUserId());
 
-        if(eventListener != null) {
-            eventListener.onFriendAdded(carrier, info);
+        if(mEventListener != null) {
+            mEventListener.onFriendAdded(carrier, info);
         }
     }
 
     @Override
     public void onFriendConnection(Carrier carrier, String friendId, ConnectionStatus status) {
         Logger.info("Carrier friend connect. peer UserId: " + friendId + " status:" + status);
+        mFriendConnectionStatus.put(friendId, status);
+
         if(status == ConnectionStatus.Connected) {
             CarrierHelper.setPeerUserId(friendId);
         } else {
             CarrierHelper.setPeerUserId(null);
         }
 
-        if(eventListener != null) {
-            eventListener.onFriendConnection(carrier, friendId, status);
+        if(mEventListener != null) {
+            mEventListener.onFriendConnection(carrier, friendId, status);
         }
     }
 
@@ -66,15 +70,29 @@ public class DefaultCarrierHandler extends AbstractCarrierHandler {
     public void onFriendMessage(Carrier carrier, String from, byte[] message) {
         Logger.info("Carrier receiver message from UserId: " + from
                 + "\nmessage: " + new String(message));
+        Logger.info("DefaultCarrierHandler.onFriendMessage() listener=" + mEventListener);
 
-        if(eventListener != null) {
-            eventListener.onFriendMessage(carrier, from, message);
+        if(mEventListener != null) {
+            mEventListener.onFriendMessage(carrier, from, message);
         }
     }
 
     public void setEventListener(AbstractCarrierHandler listener) {
-        eventListener = listener;
+        Logger.info("DefaultCarrierHandler.setEventListener() listener=" + listener);
+        mEventListener = listener;
+
+        if(mEventListener != null) {
+            if (mConnectionStatus != null) {
+                mEventListener.onConnection(Carrier.getInstance(), mConnectionStatus);
+            }
+
+            for (HashMap.Entry<String, ConnectionStatus> entry : mFriendConnectionStatus.entrySet()) {
+                mEventListener.onFriendConnection(Carrier.getInstance(), entry.getKey(), entry.getValue());
+            }
+        }
     }
-    private AbstractCarrierHandler eventListener = null;
+    private AbstractCarrierHandler mEventListener = null;
+    ConnectionStatus mConnectionStatus = null;
+    HashMap<String, ConnectionStatus> mFriendConnectionStatus = new HashMap<>();
 }
 
